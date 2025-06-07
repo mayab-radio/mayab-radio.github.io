@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayab Radio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        header {
+            background-color: #00796b;
+            color: white;
+            padding: 10px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #f4f4f4;
+            padding: 10px 0;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            margin: 0 5px;
+            border-radius: 5px;
+            background-color: white;
+        }
+        .tab.active {
+            background-color: #00796b;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #00796b;
+            color: white;
+        }
+        td {
+            cursor: pointer;
+            color: #00796b;
+        }
+        td:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        .controls button {
+            background-color: #00796b;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .controls button:hover {
+            background-color: #004d40;
+        }
+        .notification {
+            margin: 20px 0;
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mayab Radio</h1>
+        <p>Busca y reproduce tus emisoras favoritas, Creado por Emmanuel Cruz</p>
+    </header>
+
+    <!-- Pestañas -->
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('quintanaRoo')">Quintana Roo</div>
+        <div class="tab" onclick="showTab('yucatan')">Yucatán</div>
+        <div class="tab" onclick="showTab('campeche')">Campeche</div>
+    </div>
+
+    <!-- Contenido de las pestañas -->
+    <div class="tab-content active" id="quintanaRoo">
+        <h2>Estaciones de Quintana Roo</h2>
+        <table>
+            <tr><th>Estación</th></tr>
+            <tr><td onclick="selectStation(0)">Radio Chetumal, 860 AM</td></tr>
+        <tr><td onclick="selectStation(1)">Hayl, 91.3 FM</td></tr>
+        <tr><td onclick="selectStation(2)">La Lupe, 95.3 FM</td></tr>
+        <tr><td onclick="selectStation(3)">Sol Sterio, 97.7 FM</td></tr>
+        <tr><td onclick="selectStation(4)">La Bestia Grupera, 99.3 FM</td></tr>
+        <tr><td onclick="selectStation(5)">Radio Chetumal FM, 100.9 FM</td></tr>
+        <tr><td onclick="selectStation(6)">La Guadalupana, 101.7 FM</td></tr>
+        <tr><td onclick="selectStation(7)">Imagen Radio, 90.7 FM</td></tr>
+        <tr><td onclick="selectStation(8)">La Bestia Grupera, 91.5 FM</td></tr>
+        <tr><td onclick="selectStation(9)">Radio Fórmula, 92.3 FM</td></tr>
+        <tr><td onclick="selectStation(10)">Mix, 93.1 FM</td></tr>
+        <tr><td onclick="selectStation(11)">La Z, 94.9 FM</td></tr>
+        <tr><td onclick="selectStation(12)">Los 40, 96.1 FM</td></tr>
+        <tr><td onclick="selectStation(13)">Máxima, 97.5 FM</td></tr>
+        <tr><td onclick="selectStation(14)">Locura, 99.3 FM</td></tr>
+        <tr><td onclick="selectStation(15)">La Ke Buena, 101.3 FM</td></tr>
+        <tr><td onclick="selectStation(16)">Caribe, 101.9 FM</td></tr>
+        <tr><td onclick="selectStation(17)">Turquesa Pop, 102.3 FM</td></tr>
+        <tr><td onclick="selectStation(18)">Q FM, 104.3 FM</td></tr>
+        <tr><td onclick="selectStation(19)">Radio Turquesa, 105.1 FM</td></tr>
+        <tr><td onclick="selectStation(20)">Sol Estéreo, 89.3 FM</td></tr>
+        <tr><td onclick="selectStation(21)">La Voz del Caribe, 107.7 FM</td></tr>
+        <tr><td onclick="selectStation(22)">Stereo Mar, 90.5 FM</td></tr>
+        <tr><td onclick="selectStation(23)">Radio Riviera Maya, 98.1 FM</td></tr>
+        <tr><td onclick="selectStation(24)">Locura, 106.3 FM</td></tr>
+        <tr><td onclick="selectStation(25)">Radio Pax Turquesa, 93.5 FM</td></tr>
+        <tr><td onclick="selectStation(26)">Radio Chan Santa Cruz, 660 AM</td></tr>
+        <tr><td onclick="selectStation(27)">Bun, 89.9 FM</td></tr>
+        <tr><td onclick="selectStation(28)">La Mejor, 95.1 FM</td></tr>
+        <tr><td onclick="selectStation(29)">Vun, 89.3 FM</td></tr>
+        <tr><td onclick="selectStation(30)">Presumida FM, 93.3 FM</td></tr>
+        </table>
+    </div>
+    <div class="tab-content" id="yucatan">
+        <h2>Estaciones de Yucatán</h2>
+        <table>
+            <tr><th>Estación</th></tr>
+        <tr><td onclick="selectStation(31)">Área, 88.5 FM</td></tr>
+        <tr><td onclick="selectStation(32)">Tele Sur Radio, 88.9 FM</td></tr>
+        <tr><td onclick="selectStation(33)">Radio Mundo, 89.3 FM</td></tr>
+        <tr><td onclick="selectStation(34)">Altavoz Radio, 89.7 FM</td></tr>
+        <tr><td onclick="selectStation(35)">La Mejor, 90.1 FM</td></tr>
+        <tr><td onclick="selectStation(36)">La Que Buena, 90.9 FM</td></tr>
+        <tr><td onclick="selectStation(37)">MYL, 92.1 FM</td></tr>
+        <tr><td onclick="selectStation(38)">Yucatán FM, 92.9 FM</td></tr>
+        <tr><td onclick="selectStation(39)">La Reverenda, 93.7 FM</td></tr>
+        <tr><td onclick="selectStation(40)">Imagen Radio, 94.1 FM</td></tr>
+        <tr><td onclick="selectStation(41)">Radio Fórmula, 94.5 FM</td></tr>
+        <tr><td onclick="selectStation(42)">La Nueva Candela, 95.3 FM</td></tr>
+        <tr><td onclick="selectStation(43)">Los 40, 96.9 FM</td></tr>
+        <tr><td onclick="selectStation(44)">Kids, 97.7 FM</td></tr>
+        <tr><td onclick="selectStation(45)">La Comadre, 98.5 FM</td></tr>
+        <tr><td onclick="selectStation(46)">Radio Mexicana, 98.9 FM</td></tr>
+        <tr><td onclick="selectStation(47)">Exa, 99.3 FM</td></tr>
+        <tr><td onclick="selectStation(48)">Amor, 100.1 FM</td></tr>
+        <tr><td onclick="selectStation(49)">XEEK, 101.5 FM</td></tr>
+        <tr><td onclick="selectStation(50)">Vida, 101.9 FM</td></tr>
+        <tr><td onclick="selectStation(51)">Retro, 103.1 FM</td></tr>
+        <tr><td onclick="selectStation(52)">Radio Universidad, 103.9 FM</td></tr>
+        <tr><td onclick="selectStation(53)">Triòn, 105.1 FM</td></tr>
+        <tr><td onclick="selectStation(54)">Súper Estéreo, 105.9 FM</td></tr>
+        <tr><td onclick="selectStation(55)">Radio Educación, 107.9 FM</td></tr>
+        <tr><td onclick="selectStation(56)">La Nueva Reverenda, 91.9 FM</td></tr>
+        <tr><td onclick="selectStation(57)">Candela, 92.7 FM</td></tr>
+    <tr><td onclick="selectStation(58)">Sendero, 98.3 FM</td></tr>
+        <tr><td onclick="selectStation(59)">La Nueva Candela, 96.3 FM</td></tr>
+        <tr><td onclick="selectStation(60)">La voz de los mayas, 730 AM</td></tr>
+<tr><td onclick="selectStation(61)">Kuxtal, 93.3 FM</td></tr>
+<tr><td onclick="selectStation(62)">Super Zona, 104.3 FM</td></tr>        </table>
+<tr><td onclick="selectStation(63)">Stereo Tikul, 107.7 FM</td></tr>
+    </div>
+    <div class="tab-content" id="campeche">
+        <h2>Estaciones de Campeche</h2>
+        <table>
+            <tr><th>Estación</th></tr>
+<tr><td onclick="selectStation(64)">Radio Delfín, 88.9 FM</td></tr>
+<tr><td onclick="selectStation(65)">Bandolera, 92.3 FM</td></tr>
+<tr><td onclick="selectStation(66)">Retro, 93.9 FM</td></tr>
+<tr><td onclick="selectStation(67)">La Comadre, 95.5 FM</td></tr>
+<tr><td onclick="selectStation(68)">Exa, 99.7 FM</td></tr>
+<tr><td onclick="selectStation(69)">La Reverenda, 100.5 FM</td></tr>
+<tr><td onclick="selectStation(70)">FM Globo, 101.3 FM</td></tr>
+<tr><td onclick="selectStation(71)">Altavoz Radio, 88.5 FM</td></tr>
+<tr><td onclick="selectStation(72)">Radio Fórmula, 97.3 FM</td></tr>
+<tr><td onclick="selectStation(73)">Exa, 100.3 FM</td></tr>
+<tr><td onclick="selectStation(74)">Kidz, 101.9 FM</td></tr>
+<tr><td onclick="selectStation(75)">La Ke Buena, 102.7 FM</td></tr>
+<tr><td onclick="selectStation(76)">Radio IC, 105.1 FM</td></tr>
+<tr><td onclick="selectStation(77)">La Veterana, 106.5 FM</td></tr>
+        </table>
+    </div>
+
+    <!-- Notificación -->
+    <div class="notification" id="notificationText">Selecciona una estación para comenzar.</div>
+
+    <!-- Controles flotantes -->
+    <div class="controls">
+        <button onclick="prevStation()">Anterior</button>
+        <button onclick="playPause()">Reproducir/Pausar</button>
+        <button onclick="nextStation()">Siguiente</button>
+        <button onclick="stopStation()">Detener</button>
+    </div>
+
+    <audio id="radioPlayer">
+        <source id="stationSource" src="" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        const stations = [
+            { name: "Radio Chetumal, 860 AM", url: "https://sp2.servidorrprivado.com/9132/stream" },
+            { name: "Hayl, 91.3 FM", url: "https://stream.miradio.in/proxy/haahilfm/live?type=.mp3" },
+            { name: "La Lupe, 95.3 FM", url: "https://cast4.asurahosting.com/proxy/radiocan/stream" },
+{ name: "Sol Sterio, 97.7 FM", url: "https://securestream.mxradio.xyz/chetumal/" },
+            { name: "La Bestia Grupera, 99.3 FM", url: "https://cdn1.onstream.audio/proxy/xhqaa/stream" },
+{ name: "Radio Chetumal FM, 100.9 FM", url: "https://sp2.servidorrprivado.com/3981/stream" },
+            { name: "La Guadalupana, 101.7 FM", url: "https://cast4.asurahosting.com/proxy/lavozdeq/stream" },
+{ name: "Imagen Radio, 90.7 FM", url: "https://14833.live.streamtheworld.com:443/XEDAFM_SC" },
+            { name: "La Bestia Grupera, 91.5 FM", url: "https://cdn1.onstream.audio/proxy/xhccq/stream" },
+            { name: "Radio Fórmula, 92.3 FM", url: "https://n05.radiojar.com/285mz7q2q8tvv" },
+            { name: "Mix, 93.1 FM", url: "https://playerservices.streamtheworld.com/api/livestream-redirect/XHYIFM_SC" },
+            { name: "La Z, 94.9 FM", url: "https://96punto5hits.online:8040/radio.mp3?ver=135503" },
+{ name: "Los 40, 96.1 FM", url: "https://stream-175.zeno.fm/8pnsdde1sy8uv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiI4cG5zZGRlMXN5OHV2IiwiaG9zdCI6InN0cmVhbS0xNzUuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6ImxrRldhbHpsUzJHbC02aWhQd2llcVEiLCJpYXQiOjE3Mzc0Nzg1OTAsImV4cCI6MTczNzQ3ODY1MH0.pAkZD7CR6ii46059e-3jD40Ca98dwRzyAOKvTtx2cSE" },
+            { name: "Máxima, 97.5 FM", url: "https://mdstrm.com/audio/66e9d6ccaefe12962688efb9/live.m3u8?_=1737428919223&dnt=true&player=66a2710a77d31dbcddc82cc8&uid=EpPSa8wjNleETF914JyuBSxmWiQjo6Hh&sid=e4g3QNSDrcYerMeP41M19ufBmXnICfoe&pid=mWTBrCa9RFsWo6U2xi15v4ng4Wl7vD4H&an=lightning-player&at=web-app&av=v1.0.9&sc=0&ref=cancun.maximafm.com.mx&res=393x873" },
+            { name: "Locura, 99.3 FM", url: "https://playerservices.streamtheworld.com/api/livestream-redirect/XHCQR_SC" },
+{ name: "La Ke Buena, 101.3 FM", url: "https://streaming.servicioswebmx.com/8286/stream" },
+            { name: "Caribe, 101.9 FM", url: "https://sp2.servidorrprivado.com/8042/stream/1/" },
+            { name: "Turquesa Pop, 102.3 FM", url: "https://stream.miradio.in/proxy/t1027/live?ver=197307" },
+            { name: "Q FM, 104.3 FM", url: "https://usa3.lhdserver.es:8023/stream" },
+            { name: "Radio Turquesa, 105.1 FM", url: "https://stream.miradio.in/proxy/rt1051/live?ver=830074" },
+{ name: "Sol Estéreo, 89.3 FM", url: "https://securestream.mxradio.xyz/cozumel/" },
+{ name: "La Voz del Caribe, 107.7 FM", url: "https://stream.zeno.fm/w1sa0rwnfhivv" },
+{ name: "Stereo Mar, 90.5 FM", url: "https://streaming.servicioswebmx.com/8036/stream" },
+{ name: "Radio Riviera Maya, 98.1 FM", url: "https://sp2.servidorrprivado.com/8030/stream" },
+{ name: "Locura, 106.3 FM", url: "https://playerservices.streamtheworld.com/api/livestream-redirect/XHLAYA_SC" },
+{ name: "Radio Pax Turquesa, 93.5 FM", url: "https://stream.miradio.in/proxy/pxtrqs/live?ver=560193" },
+{ name: "Radio Chan Santa Cruz, 660 AM", url: "https://sp2.servidorrprivado.com/8028/stream" },
+{ name: "Bun, 89.9 FM", url: "https://stream.freepi.io:8206/stream" },
+{ name: "La Mejor, 95.1 FM", url: "https://stream-178.zeno.fm/akp54s8idsevv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJha3A1NHM4aWRzZXZ2IiwiaG9zdCI6InN0cmVhbS0xNzguemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IkxmSHdFYzIxUU9hbmttOWtIdmRMQUEiLCJpYXQiOjE3NDkzMDE3NzgsImV4cCI6MTc0OTMwMTgzOH0.sqtU--0RmxF1xcubwJ10ZO0d84BHrgcyO9WbJW7lYX8" },
+{ name: "Vun, 89.3 FM", url: "https://stream.freepi.io:8204/live" },
+{ name: "Presumida FM, 93.3 FM", url: "https://stream9.mexiserver.com/8384/;" },
+    { name: "Área, 88.5 FM", url: "https://s1.voscast.com:10271/stream" },
+    { name: "Tele Sur Radio, 88.9 FM", url: "https://streaming.shoutcast.com/telesur-radio-88-9-fm-" },
+    { name: "Radio Mundo, 89.3 FM", url: "https://cento02.mipanelradio.com/proxy/radiomu5?mp=/stream" },
+    { name: "Altavoz Radio, 89.7 FM", url: "https://s2.mexside.net/8138/stream" },
+    { name: "La Mejor, 90.1 FM", url: "https://playerservices.streamtheworld.com/api/livestream-redirect/XHQW.mp3?dist=tunein&DIST=TuneIn&TGT=TuneIn&maxServers=2&gdpr=0&us_privacy=1YNY&partnertok=eyJhbGciOiJIUzI1NiIsImtpZCI6InR1bmVpbiIsInR5cCI6IkpXVCJ9.eyJ0cnVzdGVkX3BhcnRuZXIiOnRydWUsImlhdCI6MTcxOTE2NTg0OCwiaXNzIjoidGlzcnYifQ.oOcZmISIYcASmmgzk0m40QctSBGfE6j6jbH9HEu1nJU" },
+    { name: "La Que Buena, 90.9 FM", url: "https://stream-156.zeno.fm/2pz1hwmc4p8uv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiIycHoxaHdtYzRwOHV2IiwiaG9zdCI6InN0cmVhbS0xNTYuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IjFjb3JpZTFkUzVlLTgzd1ZtTlMyV2ciLCJpYXQiOjE3MTg5MDM5ODYsImV4cCI6MTcxODkwNDA0Nn0.EBg2qbVgKNbxLPD3kTfgZjw6n5TvwruUd9pNUpLcz8c" },
+    { name: "MYL, 92.1 FM", url: "https://s2.mexside.net/8120/stream" },
+    { name: "Yucatán FM, 92.9 FM", url: "https://s2.mexside.net/8054/stream/1/" },
+    { name: "La Reverenda, 93.7 FM", url: "https://s2.mexside.net:7080/stream/1/" },
+    { name: "Imagen Radio, 94.1 FM", url: "http://18853.live.streamtheworld.com/XEDAFMAAC_SC" },
+    { name: "Radio Fórmula, 94.5 FM", url: "https://n12.radiojar.com/pp6pmybp3p8uv?rj-ttl=5&rj-tok=AAABkO1YssIAIuGvTWIIU7J5uA" },
+    { name: "La Nueva Candela, 95.3 FM", url: "https://stream-158.zeno.fm/tbnc01hc4p8uv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ0Ym5jMDFoYzRwOHV2IiwiaG9zdCI6InN0cmVhbS0xNTguemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IjdJRFc4a2wzUjBDRWlaMGpVT0hGMnciLCJpYXQiOjE3MTg4MzIxNTksImV4cCI6MTcxODgzMjIxOX0.D5CGscYmdyldOaOl7gCvhAqrM1OtSIsPqz8egeRF0c4" },
+    { name: "Los 40, 96.9 FM", url: "https://stream-157.zeno.fm/44t6wqmc4p8uv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiI0NHQ2d3FtYzRwOHV2IiwiaG9zdCI6InN0cmVhbS0xNTcuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IkN2RUYyZXZGU0xxaGVtSnVJTTh2dXciLCJpYXQiOjE3MjE5Njg5MjYsImV4cCI6MTcyMTk2ODk4Nn0.nQNxIDhWfrGEgL4uWpOPGSgcSRb8aTxHcpUgb2DxTKY" },
+    { name: "Kids, 97.7 FM", url: "https://webprod.sipse.com.mx:8080/kissfm/" },
+    { name: "La Comadre, 98.5 FM", url: "https://webprod.sipse.com.mx:8080/lacomadre" },
+    { name: "Radio Mexicana, 98.9 FM", url: "https://stream-159.zeno.fm/4xwhyk6xr98uv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiI0eHdoeWs2eHI5OHV2IiwiaG9zdCI6InN0cmVhbS0xNTkuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IndQNWc0SEs2UnNhZEVVc0p6NEZrRWciLCJpYXQiOjE3MjMyMjMzMjQsImV4cCI6MTcyMzIyMzM4NH0.gVLSL_twvk92ezIKinq-tjuZKIprvjCm-GOFkKfZx_s" },
+    { name: "Exa, 99.3 FM", url: "https://playerservices.streamtheworld.com/api/livestream-redirect/XHMRA_SC" },
+{ name: "Amor, 100.1 FM", url: "https://webprod.sipse.com.mx:8080/amor" },
+{ name: "XEEK, 101.5 FM", url: "https://s1.voscast.com:10269/stream" },
+{ name: "Vida, 101.9 FM", url: "https://cast5.my-control-panel.com/proxy/lavision/stream" },
+{ name: "Retro, 103.1 FM", url: "https://stream-159.zeno.fm/4swephmc4p8uv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiI0c3dlcGhtYzRwOHV2IiwiaG9zdCI6InN0cmVhbS0xNTkuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6ImhpajVSWFBpUlBhTHNjNFduc3dYVGciLCJpYXQiOjE3MTg5MjExMjksImV4cCI6MTcxODkyMTE4OX0.0ej_ObOOT9a2ZjcFgEX-fXWLz_n8meB7KOXEGDyXCCA" },
+{ name: "Radio Universidad, 103.9 FM", url: "https://radio.uady.mx:8443/radiouniversidad" },
+{ name: "Triòn, 105.1 FM", url: "https://n0d.radiojar.com/f7zt43bp3p8uv?callLetters=XHZ-FM&country=MX&rj-ttl=5&site-url=https%3A%2F%2Fwww.iheart.com%2Flive%2Fradio-formula-yucatan-1051-8596%2F&dist=iheart&terminalid=164&locale=es-MX&rj-tok=AAABkDecBX4ArdbBoHXgjLwEfw&clientType=web&modTime=1718919267934&profileid=8750962461&host=webapp.MX&devicename=web-mobile&subscription_type=free&territory=MX&stationid=8596" },
+{ name: "Súper Estéreo, 105.9 FM", url: "https://stream-159.zeno.fm/suh71k2xr98uv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJzdWg3MWsyeHI5OHV2IiwiaG9zdCI6InN0cmVhbS0xNTkuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IklKaG84Rk1QVGVHWGcxMTFGQVJzNWciLCJpYXQiOjE3MjIwMDMxNzAsImV4cCI6MTcyMjAwMzIzMH0.ColGHOQ72zluNmFN025m1YSXVMI5kzqvqnDPjmrikKA" },
+{ name: "Radio Educación, 107.9 FM", url: "https://s2.mexside.net/8176/stream" },
+            { name: "La Nueva Reverenda, 91.9 FM", url: "https://s2.mexside.net:7082/stream/1/" },
+            { name: "Candela, 92.7 FM", url: "https://stream-164.zeno.fm/n0cbc1kc4p8uv" },
+{ name: "Sendero, 98.3 FM", url: "https://stream-175.zeno.fm/bpaudlnahhfuv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJicGF1ZGxuYWhoZnV2IiwiaG9zdCI6InN0cmVhbS0xNzUuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6InZoQXVBUGRoU25DZlJBV2o0VmtTWVEiLCJpYXQiOjE3NDkyNTgxODgsImV4cCI6MTc0OTI1ODI0OH0.KzSJP6GFr6QQ8Apo-NzFuKRw66jyQDUZASGtVhNawSA" },
+            { name: "La Nueva Candela, 96.3 FM", url: "https://stream-154.zeno.fm/bhb067kc4p8uv" },
+            { name: "La voz de los mayas, 730 AM", url: "https://radios.inpi.gob.mx:8080/xepet" },
+{ name: "Kuxtal, 93.3 FM", url: "https://stream.zeno.fm/p8vi8rwcsrhtv" },
+{ name: "Super Zona, 104.3 FM", url: "https://stream-175.zeno.fm/0kfnwylndhsuv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiIwa2Zud3lsbmRoc3V2IiwiaG9zdCI6InN0cmVhbS0xNzUuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IkdvRF93UnNKVDNHcnRpUF93ODdQN2ciLCJpYXQiOjE3NDkyNjA5ODcsImV4cCI6MTc0OTI2MTA0N30.Gnbcc0ED9RRetDBPbznS0gQ2JDCNYvC5D36y-CU6cTI" },
+{ name: "Stereo Tikul, 107.7 FM", url: "https://sonic01.instainternet.com/8074/stream" },
+{ name: "Radio Delfín, 88.9 FM", url: "https://stream-151.zeno.fm/4u09mv8m1k0uv?zs=NFfxA3ZWTG-sMVSYHAnAnw" },
+{ name: "Bandolera, 92.3 FM", url: "https://cdn1.onstream.audio/proxy/xhpcdc/stream" },
+{ name: "Retro, 93.9 FM", url: "https://cdn1.onstream.audio/proxy/xhpmen/stream" },
+{ name: "La Comadre, 95.5 FM", url: "https://webprod.sipse.com.mx:8080/carmen" },
+{ name: "Exa, 99.7 FM", url: "https://ss1.audiorama.com.mx:6674/stream/1/" },
+{ name: "La Reverenda, 100.5 FM", url: "https://s2.mexside.net/8240/stream" },
+{ name: "FM Globo, 101.3 FM", url: "https://playerservices.streamtheworld.com/api/livestream-redirect/XHMAB_SC" },
+{ name: "Altavoz Radio, 88.5 FM", url: "https://s2.mexside.net/8132/stream" },
+{ name: "Radio Fórmula, 97.3 FM", url: "https://sp2.servidorrprivado.com:10886/stream?ver=520678" },
+{ name: "Exa, 100.3 FM", url: "https://playerservices.streamtheworld.com/api/livestream-redirect/XHMI.MP3?ver=856631" },
+{ name: "Kidz, 101.9 FM", url: "https://cast4.asurahosting.com/proxy/televis2/kisscampeche" },
+{ name: "La Ke Buena, 102.7 FM", url: "https://sp2.servidorrprivado.com:10887/stream?ver=75548" },
+{ name: "Radio IC, 105.1 FM", url: "https://stream-153.zeno.fm/tujzl3fsfzhvv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ0dWp6bDNmc2Z6aHZ2IiwiaG9zdCI6InN0cmVhbS0xNTMuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6Im5aNXhmNlpOU00tNlJ4OURLZEcxOGciLCJpYXQiOjE3Mjc4MzY4NTMsImV4cCI6MTcyNzgzNjkxM30.lblSaWgVpn8qGFByVGufOhDJOqVguL4Q5IvsBk183mQ" },
+{ name: "La Veterana, 106.5 FM", url: "https://stm3.xcast.com.br:9098/stream" }
+        ];
+
+    let currentStationIndex = localStorage.getItem('currentStationIndex') 
+        ? parseInt(localStorage.getItem('currentStationIndex')) 
+        : 0;
+
+    let isPlaying = localStorage.getItem('isPlaying') === 'true';
+
+    const player = document.getElementById('radioPlayer');
+    const source = document.getElementById('stationSource');
+    const notification = document.getElementById('notificationText');
+
+    // Carga inicial al abrir la página
+    window.onload = () => {
+        loadStation(currentStationIndex);
+        if (isPlaying) {
+            playStation();
+        }
+    };
+
+    function selectStation(index) {
+        currentStationIndex = index;
+        saveState();
+        loadStation(currentStationIndex);
+        playStation();
+    }
+
+    function loadStation(index) {
+        source.src = stations[index].url;
+        player.load();
+        notification.textContent = `Estación actual: ${stations[index].name}`;
+    }
+
+    function playPause() {
+        if (isPlaying) {
+            pauseStation();
+        } else {
+            playStation();
+        }
+    }
+
+    function playStation() {
+        player.play();
+        isPlaying = true;
+        saveState();
+        notification.textContent = `Reproduciendo: ${stations[currentStationIndex].name}`;
+    }
+
+    function pauseStation() {
+        player.pause();
+        isPlaying = false;
+        saveState();
+        notification.textContent = `Pausado: ${stations[currentStationIndex].name}`;
+    }
+
+    function stopStation() {
+        pauseStation();
+        player.currentTime = 0;
+        notification.textContent = 'Reproducción detenida.';
+    }
+
+    function nextStation() {
+        currentStationIndex = (currentStationIndex + 1) % stations.length;
+        saveState();
+        loadStation(currentStationIndex);
+        if (isPlaying) {
+            playStation();
+        }
+    }
+
+    function prevStation() {
+        currentStationIndex = (currentStationIndex - 1 + stations.length) % stations.length;
+        saveState();
+        loadStation(currentStationIndex);
+        if (isPlaying) {
+            playStation();
+        }
+    }
+
+    function showTab(tabId) {
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => tab.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        document.querySelector(`.tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    function saveState() {
+        localStorage.setItem('currentStationIndex', currentStationIndex);
+        localStorage.setItem('isPlaying', isPlaying);
+    }
+    </script>
+</body>
+</html>
