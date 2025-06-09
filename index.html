@@ -95,7 +95,7 @@
 <body>
     <header>
         <h1>Mayab Radio</h1>
-        <p>Busca y reproduce tus emisoras favoritas, Creado por Emmanuel Cruz</p>
+<p>Sintoniza el corazón del Mayab: frecuencias que llevan la esencia de Quintana Roo, Yucatán y Campeche.</p>
     </header>
 
     <!-- Pestañas -->
@@ -178,8 +178,9 @@
         <tr><td onclick="selectStation(59)">La Nueva Candela, 96.3 FM</td></tr>
         <tr><td onclick="selectStation(60)">La voz de los mayas, 730 AM</td></tr>
 <tr><td onclick="selectStation(61)">Kuxtal, 93.3 FM</td></tr>
-<tr><td onclick="selectStation(62)">Super Zona, 104.3 FM</td></tr>        </table>
-<tr><td onclick="selectStation(63)">Stereo Tikul, 107.7 FM</td></tr>
+<tr><td onclick="selectStation(62)">Super Zona, 104.3 FM</td></tr>
+<tr><td onclick="selectStation(63)">stereo Tikul, 107.7 FM</td></tr>
+</table>
     </div>
     <div class="tab-content" id="campeche">
         <h2>Estaciones de Campeche</h2>
@@ -249,7 +250,7 @@
 { name: "Radio Chan Santa Cruz, 660 AM", url: "https://sp2.servidorrprivado.com/8028/stream" },
 { name: "Bun, 89.9 FM", url: "https://stream.freepi.io:8206/stream" },
 { name: "La Mejor, 95.1 FM", url: "https://stream-178.zeno.fm/akp54s8idsevv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJha3A1NHM4aWRzZXZ2IiwiaG9zdCI6InN0cmVhbS0xNzguemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IkxmSHdFYzIxUU9hbmttOWtIdmRMQUEiLCJpYXQiOjE3NDkzMDE3NzgsImV4cCI6MTc0OTMwMTgzOH0.sqtU--0RmxF1xcubwJ10ZO0d84BHrgcyO9WbJW7lYX8" },
-{ name: "Vun, 89.3 FM", url: "https://stream.freepi.io:8204/live" },
+{ name: "Vun, 89.3 FM", url: "http://stream.freepi.io:8204/stream" },
 { name: "Presumida FM, 93.3 FM", url: "https://stream9.mexiserver.com/8384/;" },
     { name: "Área, 88.5 FM", url: "https://s1.voscast.com:10271/stream" },
     { name: "Tele Sur Radio, 88.9 FM", url: "https://streaming.shoutcast.com/telesur-radio-88-9-fm-" },
@@ -311,12 +312,17 @@
     const notification = document.getElementById('notificationText');
 
     // Carga inicial al abrir la página
-    window.onload = () => {
-        loadStation(currentStationIndex);
-        if (isPlaying) {
-            playStation();
-        }
-    };
+window.onload = () => {
+    const savedURL = localStorage.getItem('lastStationURL');
+    if (savedURL) {
+        source.src = savedURL;
+        player.load();
+    }
+    
+    if (isPlaying) {
+        player.play().catch(e => console.log("Error al iniciar:", e));
+    }
+};
 
     function selectStation(index) {
         currentStationIndex = index;
@@ -388,10 +394,11 @@
         document.getElementById(tabId).classList.add('active');
     }
 
-    function saveState() {
-        localStorage.setItem('currentStationIndex', currentStationIndex);
-        localStorage.setItem('isPlaying', isPlaying);
-    }
+function saveState() {
+    localStorage.setItem('currentStationIndex', currentStationIndex);
+    localStorage.setItem('isPlaying', isPlaying);
+    localStorage.setItem('lastStationURL', stations[currentStationIndex].url); // Guardar URL actual
+}
     </script>
 </body>
 </html>
